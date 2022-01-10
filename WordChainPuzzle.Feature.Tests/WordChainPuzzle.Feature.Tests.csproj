@@ -34,8 +34,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyClass.cs" />
+    <Compile Include="FileManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WordEngineTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WordChainPuzzle.Feature\WordChainPuzzle.Feature.csproj">

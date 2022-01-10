@@ -26,7 +26,5 @@ namespace WordChainPuzzle.Feature.Tests
             fileManager.LoadWords("files/dictionary.txt");
             Assert.AreEqual(fileManager.Words.Count, 45425);
         }
-
-
     }
 }
