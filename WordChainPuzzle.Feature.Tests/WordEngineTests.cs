@@ -85,6 +85,21 @@ namespace WordChainPuzzle.Feature.Tests
             Assert.AreEqual(1, words.Count);
         }
 
+        [TestCase("cat", "dog")]
+        public void GetWordChain_CatToDogTwoWordChain_ReturnsTrue(string firstWord, string lastword)
+        {
+            var words = _wordengine.GetWordChain(firstWord, lastword);
+            Assert.AreEqual(4, words.Count);
+        }
+
+        [TestCase("dog", "cat")]
+        public void GetWordChain_DogToCatTwoWordChain_ReturnsTrue(string firstWord, string lastword)
+        {
+            var words = _wordengine.GetWordChain(firstWord, lastword);
+            Console.WriteLine(String.Join(",", words));
+            Assert.AreEqual(5, words.Count);
+        }
+
         static object[] WordSizeCases =
         {
             new object [] {"cat", 536 },

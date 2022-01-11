@@ -46,6 +46,11 @@ namespace WordChainPuzzle.Feature.Words
                     break;
                 }
 
+                if(letterCount == lastWord.Length)
+                {
+                    letterCount = 0;
+                }
+
                 SwapLetter(ref newWord, lastWord, letterCount);
 
                 while (!listOfWords.Contains(newWord))
@@ -54,7 +59,8 @@ namespace WordChainPuzzle.Feature.Words
                     {
                         throw new ArgumentException("Not found word ran out of letters", nameof(WordEngine));
                     }
-
+                    newWord = firstWord;
+                    letterCount++;
                     SwapLetter(ref newWord, lastWord, letterCount);
                     
                 }
