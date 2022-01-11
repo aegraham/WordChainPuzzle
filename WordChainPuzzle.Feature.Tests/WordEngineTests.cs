@@ -29,14 +29,21 @@ namespace WordChainPuzzle.Feature.Tests
             Assert.AreEqual(result.Count, numberOfWords);
         }
 
-        [TestCaseSource(nameof(WordMatchCases))]
-        public void WordsMatch_AllWordsMatch_ReturnsTrue(string firstWord, string lastWord)
+        [TestCaseSource(nameof(WordMatchByLengthCases))]
+        public void WordsMatch_AllWordsLengthMatch_ReturnsTrue(string firstWord, string lastWord)
         {
             var match = _wordengine.WordsMatch(firstWord, lastWord);
             Assert.IsTrue(match);
         }
 
-        [TestCaseSource(nameof(WordDoNotMatchCases))]
+        [TestCaseSource(nameof(WordDoNotMatchByLengthCases))]
+        public void WordsMatch_AllWordsLengthDoNotMatch_ReturnsTrue(string firstWord, string lastWord)
+        {
+            var match = _wordengine.WordsMatch(firstWord, lastWord);
+            Assert.IsFalse(match);
+        }
+
+        [TestCase("dog","dog")]
         public void WordsMatch_AllWordsDoNotMatch_ReturnsTrue(string firstWord, string lastWord)
         {
             var match = _wordengine.WordsMatch(firstWord, lastWord);
@@ -58,10 +65,24 @@ namespace WordChainPuzzle.Feature.Tests
         }
 
         [TestCase("dog","cog")]
-        public void GetWordChain(string firstWord, string lastword)
+        public void GetWordChain_DogToCog_ReturnsTrue(string firstWord, string lastword)
         {
             var words = _wordengine.GetWordChain(firstWord, lastword);
             Assert.IsNotNull(words);
+        }
+
+        [TestCase("dog", "cog")]
+        public void GetWordChain_DogToCogTwoWordChain_ReturnsTrue(string firstWord, string lastword)
+        {
+            var words = _wordengine.GetWordChain(firstWord, lastword);
+            Assert.AreEqual(2,words.Count);
+        }
+
+        [TestCase("dog", "dog")]
+        public void GetWordChain_DogToDogTwoWordChain_ReturnsTrue(string firstWord, string lastword)
+        {
+            var words = _wordengine.GetWordChain(firstWord, lastword);
+            Assert.AreEqual(1, words.Count);
         }
 
         static object[] WordSizeCases =
@@ -72,7 +93,7 @@ namespace WordChainPuzzle.Feature.Tests
             new object [] {"abbeys", 6177}
         };
 
-        static object[] WordMatchCases =
+        static object[] WordMatchByLengthCases =
         {
             new object [] {"cat", "Dog" },
             new object [] {"abba", "road"},
@@ -80,7 +101,7 @@ namespace WordChainPuzzle.Feature.Tests
             new object [] {"abbeys", "mezzea"}
         };
 
-        static object[] WordDoNotMatchCases =
+        static object[] WordDoNotMatchByLengthCases =
         {
             new object [] {"cat", "Dogs" },
             new object [] {"abba", "roada"},

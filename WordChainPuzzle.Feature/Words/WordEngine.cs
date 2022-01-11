@@ -40,9 +40,10 @@ namespace WordChainPuzzle.Feature.Words
 
             while (!foundWord)
             {
-                if(newWord == lastWord)
+                if (newWord == lastWord)
                 {
                     foundWord = true;
+                    break;
                 }
 
                 SwapLetter(ref newWord, lastWord, letterCount);
@@ -59,11 +60,13 @@ namespace WordChainPuzzle.Feature.Words
                 }
 
                 wordChain.Add(newWord);
-                letterCount++;                
+                letterCount++;
+
+                
             }
            
 
-            return null;
+            return wordChain;
         }
 
         public void SwapLetter(ref string newWord, in string lastWord,in int letterCount)
@@ -82,7 +85,7 @@ namespace WordChainPuzzle.Feature.Words
             return words.FindAll(x => x.Length == inputWord.Length);
         }
 
-        public bool WordExists(in string word, in List<string> listOfWords)
+        public bool WordExists(string word, in List<string> listOfWords)
         {
             if(listOfWords.Contains(word.ToLower()))
             {
@@ -92,9 +95,9 @@ namespace WordChainPuzzle.Feature.Words
             return false;
         }
 
-        public bool WordsMatch(string firstWord, string secondWord)
+        public bool WordsMatch(string firstWord, string lastWord)
         {
-            if(firstWord.Length == secondWord.Length)
+            if(firstWord.Length == lastWord.Length && firstWord != lastWord)
             {
                 return true;
             }
