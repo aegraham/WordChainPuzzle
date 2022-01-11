@@ -32,6 +32,26 @@ namespace WordChainPuzzle.Feature.Words
                 throw new ArgumentException("Word does not exist", nameof(WordEngine));
             }
 
+            var wordChain = FirstLetterToLastLetter(firstWord,lastWord,ref listOfWords);
+            var wordChain2 = LastLetterToFirstLetter(firstWord, lastWord, ref listOfWords);
+
+            if(wordChain.Count< wordChain2.Count)
+            {
+                return wordChain;
+            }
+            else
+            {
+                if(wordChain.Count > wordChain2.Count)
+                {
+                    return wordChain2;
+                }
+            }
+
+            return wordChain;
+        }
+
+        public List<string> FirstLetterToLastLetter(string firstWord, string lastWord, ref List<string> listOfWords)
+        {
             var wordChain = new List<string>();
             wordChain.Add(firstWord);
             var foundWord = false;
@@ -46,7 +66,7 @@ namespace WordChainPuzzle.Feature.Words
                     break;
                 }
 
-                if(letterCount == lastWord.Length)
+                if (letterCount == lastWord.Length)
                 {
                     letterCount = 0;
                 }
@@ -55,28 +75,83 @@ namespace WordChainPuzzle.Feature.Words
 
                 while (!listOfWords.Contains(newWord))
                 {
-                    if(letterCount == lastWord.Length)
+                    if (letterCount == lastWord.Length)
                     {
                         throw new ArgumentException("Not found word ran out of letters", nameof(WordEngine));
                     }
                     newWord = firstWord;
                     letterCount++;
                     SwapLetter(ref newWord, lastWord, letterCount);
-                    
+
                 }
 
-                wordChain.Add(newWord);
+                if (!wordChain.Contains(newWord))
+                {
+                    wordChain.Add(newWord);
+                }
                 letterCount++;
 
-                
+
             }
-           
 
             return wordChain;
+
         }
 
-        public void SwapLetter(ref string newWord, in string lastWord,in int letterCount)
+        public List<string> LastLetterToFirstLetter(string firstWord, string lastWord, ref List<string> listOfWords)
         {
+            var wordChain = new List<string>();
+            wordChain.Add(firstWord);
+            var foundWord = false;
+            var newWord = firstWord;
+            var letterCount = lastWord.Length;
+
+            while (!foundWord)
+            {
+                if (newWord == lastWord)
+                {
+                    foundWord = true;
+                    break;
+                }
+
+                if (letterCount == -1)
+                {
+                    letterCount = lastWord.Length;
+                }
+
+                SwapLetter(ref newWord, lastWord, letterCount);
+
+                while (!listOfWords.Contains(newWord))
+                {
+                    if (letterCount == 0)
+                    {
+                        throw new ArgumentException("Not found word ran out of letters", nameof(WordEngine));
+                    }
+                    newWord = firstWord;
+                    letterCount--;
+                    SwapLetter(ref newWord, lastWord, letterCount);
+
+                }
+
+                if (!wordChain.Contains(newWord))
+                {
+                    wordChain.Add(newWord);
+                }
+
+                letterCount--;
+            }
+
+            return wordChain;
+
+        }
+
+        public void SwapLetter(ref string newWord, in string lastWord,int letterCount)
+        {
+            if(letterCount == lastWord.Length)
+            {
+                letterCount--;
+            }
+
             newWord = newWord.Replace(newWord[letterCount], lastWord[letterCount]);
             
         }

@@ -89,6 +89,7 @@ namespace WordChainPuzzle.Feature.Tests
         public void GetWordChain_CatToDogTwoWordChain_ReturnsTrue(string firstWord, string lastword)
         {
             var words = _wordengine.GetWordChain(firstWord, lastword);
+            Console.WriteLine(String.Join(",", words));
             Assert.AreEqual(4, words.Count);
         }
 
