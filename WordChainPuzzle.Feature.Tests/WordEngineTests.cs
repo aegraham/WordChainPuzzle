@@ -43,6 +43,27 @@ namespace WordChainPuzzle.Feature.Tests
             Assert.IsFalse(match);
         }
 
+        [TestCaseSource(nameof(WordsExistCases))]
+        public void WordExisits_AllWordsExists_ReturnsTrue(string word)
+        {
+            var match =_wordengine.WordExists(word, _fileManager.Words);
+            Assert.IsTrue(match);
+        }
+
+        [TestCaseSource(nameof(WordsDoNotExistCases))]
+        public void WordExisits_AllWordsDoNotExists_ReturnsTrue(string word)
+        {
+            var match =  _wordengine.WordExists(word, _fileManager.Words);
+            Assert.IsFalse(match);
+        }
+
+        [TestCaseSource(nameof(WordsDoNotExistCases))]
+        public void WordExisits_AllWordsMixtureExists_ReturnsTrue(string word)
+        {
+            var match = _wordengine.WordExists(word, _fileManager.Words);
+            Assert.IsFalse(match);
+        }
+
         static object[] WordSizeCases =
         {
             new object [] {"cat", 536 },
@@ -66,6 +87,31 @@ namespace WordChainPuzzle.Feature.Tests
             new object [] {"abbey", "pizzaa"},
             new object [] {"abbeys", "mezzeas"}
         };
+
+        static object[] WordsExistCases =
+       {
+            new object [] {"cat"},
+            new object [] {"abba"},
+            new object [] {"abbey" },
+            new object [] {"abbeys"}
+        };
+
+        static object[] WordsDoNotExistCases =
+       {
+            new object [] {"kkk"},
+            new object [] {"gaol"},
+            new object [] {"popes" },
+            new object [] {"hellos"}
+        };
+
+        static object[] WordsMixtureExistCases =
+       {
+            new object [] {"ali"},
+            new object [] {"gaol"},
+            new object [] {"popes" },
+            new object [] {"hellos"}
+        };
+
 
     }
     
