@@ -57,11 +57,11 @@ namespace WordChainPuzzle.Feature.Tests
             Assert.IsFalse(match);
         }
 
-        [TestCaseSource(nameof(WordsDoNotExistCases))]
-        public void WordExisits_AllWordsMixtureExists_ReturnsTrue(string word)
+        [TestCase("dog","cog")]
+        public void GetWordChain(string firstWord, string lastword)
         {
-            var match = _wordengine.WordExists(word, _fileManager.Words);
-            Assert.IsFalse(match);
+            var words = _wordengine.GetWordChain(firstWord, lastword);
+            Assert.IsNotNull(words);
         }
 
         static object[] WordSizeCases =
@@ -103,15 +103,6 @@ namespace WordChainPuzzle.Feature.Tests
             new object [] {"popes" },
             new object [] {"hellos"}
         };
-
-        static object[] WordsMixtureExistCases =
-       {
-            new object [] {"ali"},
-            new object [] {"gaol"},
-            new object [] {"popes" },
-            new object [] {"hellos"}
-        };
-
 
     }
     
