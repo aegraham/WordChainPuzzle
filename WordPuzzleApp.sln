@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordPuzzleApp", "WordPuzzleApp\WordPuzzleApp.csproj", "{F7361DCD-6EA4-426D-A6E2-2C4B1FD0EF02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordChainPuzzle.Features", "WordChainPuzzle.Features\WordChainPuzzle.Features.csproj", "{9F8E5978-B06F-4D65-9732-9934BC272481}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordChainPuzzle.Features.Tests", "WordChainPuzzle.Features.Tests\WordChainPuzzle.Features.Tests.csproj", "{F859160F-FC17-4808-8C24-10FDCD535A3F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7361DCD-6EA4-426D-A6E2-2C4B1FD0EF02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7361DCD-6EA4-426D-A6E2-2C4B1FD0EF02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7361DCD-6EA4-426D-A6E2-2C4B1FD0EF02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7361DCD-6EA4-426D-A6E2-2C4B1FD0EF02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F8E5978-B06F-4D65-9732-9934BC272481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F8E5978-B06F-4D65-9732-9934BC272481}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F8E5978-B06F-4D65-9732-9934BC272481}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F8E5978-B06F-4D65-9732-9934BC272481}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F859160F-FC17-4808-8C24-10FDCD535A3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F859160F-FC17-4808-8C24-10FDCD535A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F859160F-FC17-4808-8C24-10FDCD535A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F859160F-FC17-4808-8C24-10FDCD535A3F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
