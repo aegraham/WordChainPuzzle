@@ -13,18 +13,26 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine("Please enter your second word");
             var lastWord = Console.ReadLine();
 
-            if (firstWord.Length != lastWord.Length)
+            if (lastWord != null && firstWord != null && firstWord.Length != lastWord.Length)
             {
                 Console.WriteLine("Words do not match.");
+                
             }
-            
-            var wordEngine = new WordEngine("../files/dictionary.txt");
-            var startTime = DateTime.Now;
-            var words = wordEngine.GetWordChain(firstWord, lastWord);
-            var stopTime = DateTime.Now;
-            Console.WriteLine(words + " time taken = " + (stopTime.TimeOfDay - startTime.TimeOfDay));
+            else
+            {
+                if (firstWord == lastWord)
+                {
+                    Console.WriteLine("Words need to be different.");
+                }
+                else
+                {
+                    var wordEngine = new WordEngine("files/dictionary.txt");
+                    var startTime = DateTime.Now;
+                    var words = wordEngine.GetWordChain(firstWord, lastWord);
+                    var stopTime = DateTime.Now;
+                    Console.WriteLine(words + " time taken = " + (stopTime.TimeOfDay - startTime.TimeOfDay));
+                }
+            }
         }
-        
-      
     }
 }
